@@ -1,0 +1,1 @@
+docker exec -t rabbitmq rabbitmqctl trace_on -p /

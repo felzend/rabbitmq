@@ -1,0 +1,18 @@
+version: "3.5"
+
+services:
+    rabbitmq:
+      hostname: rabbitmq
+      image: rabbitmq:3.8.14-management
+      restart: unless-stopped
+      environment: 
+        - RABBITMQ_DEFAULT_USER=admin
+        - RABBITMQ_DEFAULT_PASS=felipe
+      volumes: 
+        - "./data:/var/lib/rabbitmq"
+        - "./plugins/rabbitmq_message_timestamp.ez:/opt/rabbitmq/plugins/rabbitmq_message_timestamp.ez"
+        - "./plugins/rabbitmq_delayed_message_exchange.ez:/opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange.ez"
+        - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      ports:
+        - 5672:5672
+        - 15672:15672
